@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520">
+  <style>
+    .bg { fill: #101114; }
+    .title { fill: #f5f7fb; font: 700 28px Arial, sans-serif; }
+    .label { fill: #d7dce6; font: 15px Arial, sans-serif; }
+    .value { fill: #f5f7fb; font: 700 15px Arial, sans-serif; }
+    .bar { fill: #ef2d7a; }
+  </style>
+  <rect width="100%" height="100%" class="bg"/>
+  <text x="24" y="42" class="title">Correlação com NPS: fatores operacionais críticos</text>
+  <text x="24" y="96" class="label">delivery delay days</text><rect x="220" y="72" width="610.0" height="36" rx="4" class="bar"/><text x="842.0" y="96" class="value">0.60</text><text x="24" y="150" class="label">complaints count</text><rect x="220" y="126" width="507.4" height="36" rx="4" class="bar"/><text x="739.4" y="150" class="value">0.50</text><text x="24" y="204" class="label">customer service contacts</text><rect x="220" y="180" width="358.3" height="36" rx="4" class="bar"/><text x="590.3" y="204" class="value">0.35</text><text x="24" y="258" class="label">resolution time days</text><rect x="220" y="234" width="195.5" height="36" rx="4" class="bar"/><text x="427.5" y="258" class="value">0.19</text><text x="24" y="312" class="label">freight value</text><rect x="220" y="288" width="42.0" height="36" rx="4" class="bar"/><text x="274.0" y="312" class="value">0.04</text><text x="24" y="366" class="label">customer tenure months</text><rect x="220" y="342" width="9.9" height="36" rx="4" class="bar"/><text x="241.9" y="366" class="value">0.01</text><text x="24" y="420" class="label">delivery time days</text><rect x="220" y="396" width="0.9" height="36" rx="4" class="bar"/><text x="232.9" y="420" class="value">0.00</text><text x="24" y="474" class="label">delivery attempts</text><rect x="220" y="450" width="28.3" height="36" rx="4" class="bar"/><text x="260.3" y="474" class="value">0.03</text><text x="24" y="528" class="label">order value</text><rect x="220" y="504" width="37.8" height="36" rx="4" class="bar"/><text x="269.8" y="528" class="value">0.04</text><text x="24" y="582" class="label">csat internal score</text><rect x="220" y="558" width="576.0" height="36" rx="4" class="bar"/><text x="808.0" y="582" class="value">0.56</text><text x="24" y="636" class="label">repeat purchase 30d</text><rect x="220" y="612" width="582.5" height="36" rx="4" class="bar"/><text x="814.5" y="636" class="value">0.57</text>
+</svg>

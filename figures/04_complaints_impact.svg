@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560">
+  <style>
+    .bg { fill: #101114; }
+    .title { fill: #f5f7fb; font: 700 28px Arial, sans-serif; }
+    .tick,.legend { fill: #d7dce6; font: 14px Arial, sans-serif; }
+    .axis { stroke: #333842; stroke-width: 1; }
+    .s0 { fill: #ef2d7a; }
+    .s1 { fill: #45d4c9; }
+    .s2 { fill: #f5b84b; }
+  </style>
+  <rect width="100%" height="100%" class="bg"/>
+  <text x="24" y="46" class="title">Reclamações são o principal ponto de ruptura</text>
+  <line x1="90" y1="476" x2="920" y2="476" class="axis"/>
+  <rect x="127.3" y="440.8" width="34.0" height="35.2" class="s0" rx="3"/><rect x="167.3" y="458.1" width="34.0" height="17.9" class="s1" rx="3"/><text x="193.8" y="510" class="tick" text-anchor="middle">0</text><rect x="334.9" y="448.9" width="34.0" height="27.1" class="s0" rx="3"/><rect x="374.9" y="341.5" width="34.0" height="134.5" class="s1" rx="3"/><text x="401.2" y="510" class="tick" text-anchor="middle">1-2</text><rect x="542.4" y="458.3" width="34.0" height="17.7" class="s0" rx="3"/><rect x="582.4" y="150.8" width="34.0" height="325.2" class="s1" rx="3"/><text x="608.8" y="510" class="tick" text-anchor="middle">3-5</text><rect x="749.9" y="464.4" width="34.0" height="11.6" class="s0" rx="3"/><rect x="789.9" y="86.0" width="34.0" height="390.0" class="s1" rx="3"/><text x="816.2" y="510" class="tick" text-anchor="middle">6+</text>
+  <rect x="90" y="518" width="18" height="18" class="s0"/><text x="116" y="533" class="legend">NPS médio</text><rect x="260" y="518" width="18" height="18" class="s1"/><text x="286" y="533" class="legend">% detratores</text>
+</svg>
