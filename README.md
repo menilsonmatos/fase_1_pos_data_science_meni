@@ -182,7 +182,5 @@ reports/figures/
 ## Entregáveis
 
 - Código reproduzível de tratamento, EDA e modelo opcional.
-- Relatório analítico em Markdown.
 - Visualizações em SVG.
 - Material de storytelling gerencial.
-- Roteiro de vídeo executivo de até 5 minutos.
