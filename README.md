@@ -151,9 +151,6 @@ O alto recall é útil para uma estratégia preventiva, pois reduz o risco de de
 ├── reports/
 │   ├── figures/
 │   ├── analysis_summary.json
-│   ├── relatorio_analitico.md
-│   ├── storytelling_slides.md
-│   └── roteiro_video_executivo.md
 ├── scripts/
 │   └── analyze_nps.py
 ├── README.md
