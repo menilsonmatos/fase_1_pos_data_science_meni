@@ -1,0 +1,179 @@
+{
+  "rows": 2500,
+  "columns": 23,
+  "nps_mean": 4.3786,
+  "nps_median": 4.4,
+  "nps_index": -66.0,
+  "nps_distribution_pct": {
+    "Detrator": 74.04,
+    "Neutro": 17.92,
+    "Promotor": 8.04
+  },
+  "critical_correlations": {
+    "delivery_delay_days": -0.5973,
+    "complaints_count": -0.4968,
+    "customer_service_contacts": -0.3508,
+    "resolution_time_days": -0.1914,
+    "freight_value": -0.0411,
+    "customer_tenure_months": -0.0097,
+    "delivery_time_days": 0.0009,
+    "delivery_attempts": 0.0277,
+    "order_value": 0.037,
+    "csat_internal_score": 0.564,
+    "repeat_purchase_30d": 0.5703
+  },
+  "by_region": {
+    "Centro-Oeste": {
+      "orders": 468,
+      "avg_nps": 4.21,
+      "detractor_rate": 74.36,
+      "promoter_rate": 7.69
+    },
+    "Sudeste": {
+      "orders": 520,
+      "avg_nps": 4.37,
+      "detractor_rate": 74.62,
+      "promoter_rate": 8.27
+    },
+    "Norte": {
+      "orders": 506,
+      "avg_nps": 4.38,
+      "detractor_rate": 74.51,
+      "promoter_rate": 7.51
+    },
+    "Nordeste": {
+      "orders": 485,
+      "avg_nps": 4.42,
+      "detractor_rate": 74.02,
+      "promoter_rate": 7.01
+    },
+    "Sul": {
+      "orders": 521,
+      "avg_nps": 4.49,
+      "detractor_rate": 72.74,
+      "promoter_rate": 9.6
+    }
+  },
+  "by_delay": {
+    "0 dias": {
+      "orders": 277,
+      "avg_nps": 6.86,
+      "detractor_rate": 36.46
+    },
+    "1 dia": {
+      "orders": 615,
+      "avg_nps": 5.55,
+      "detractor_rate": 59.67
+    },
+    "2-3 dias": {
+      "orders": 1171,
+      "avg_nps": 4.07,
+      "detractor_rate": 81.81
+    },
+    "4+ dias": {
+      "orders": 437,
+      "avg_nps": 2.0,
+      "detractor_rate": 97.25
+    }
+  },
+  "by_complaint": {
+    "0": {
+      "orders": 23,
+      "avg_nps": 8.52,
+      "detractor_rate": 4.35
+    },
+    "1-2": {
+      "orders": 399,
+      "avg_nps": 6.58,
+      "detractor_rate": 32.58
+    },
+    "3-5": {
+      "orders": 1551,
+      "avg_nps": 4.28,
+      "detractor_rate": 78.79
+    },
+    "6+": {
+      "orders": 527,
+      "avg_nps": 2.82,
+      "detractor_rate": 94.5
+    }
+  },
+  "by_service": {
+    "0": {
+      "orders": 554,
+      "avg_nps": 5.54,
+      "detractor_rate": 59.21
+    },
+    "1": {
+      "orders": 816,
+      "avg_nps": 4.66,
+      "detractor_rate": 70.34
+    },
+    "2": {
+      "orders": 640,
+      "avg_nps": 4.12,
+      "detractor_rate": 79.06
+    },
+    "3+": {
+      "orders": 490,
+      "avg_nps": 2.94,
+      "detractor_rate": 90.41
+    }
+  },
+  "model": {
+    "accuracy": 0.874,
+    "precision_detractor": 0.8822055137844611,
+    "recall_detractor": 0.9565217391304348,
+    "confusion_matrix": {
+      "tn": 85,
+      "fp": 47,
+      "fn": 16,
+      "tp": 352
+    },
+    "coefficients": [
+      0.005404913340815152,
+      0.12778403293410368,
+      -0.08837340544991559,
+      0.0896213273319633,
+      0.06651058964339253,
+      -0.028738091722394336,
+      -0.0028079937624229463,
+      1.1241100197023144,
+      0.06195124868561581,
+      -0.058295361958648574,
+      -0.44920054988510405,
+      0.2806354963920094,
+      -1.6438869311052626,
+      1.6368347797306069,
+      -0.21687701076035765,
+      -0.29007803319859354,
+      -0.0780450896178525,
+      -0.057225691494930904,
+      0.004252970560395837,
+      0.009963424950015143,
+      0.02320702810956,
+      -6.242883705239733e-05,
+      -0.03709857326226911
+    ],
+    "top_risk_factors": {
+      "complaints_count": 1.6368347797306069,
+      "delivery_delay_days": 1.1241100197023144,
+      "resolution_time_days": 0.2806354963920094,
+      "customer_tenure_months": 0.12778403293410368,
+      "items_quantity": 0.0896213273319633,
+      "discount_value": 0.06651058964339253,
+      "freight_value": 0.06195124868561581,
+      "customer_region_Norte": 0.02320702810956
+    },
+    "top_protection_factors": {
+      "repeat_purchase_30d": -1.6438869311052626,
+      "customer_service_contacts": -0.44920054988510405,
+      "has_delay": -0.29007803319859354,
+      "csat_internal_score": -0.21687701076035765,
+      "order_value": -0.08837340544991559,
+      "has_complaint": -0.0780450896178525,
+      "delivery_attempts": -0.058295361958648574,
+      "had_service_contact": -0.057225691494930904
+    }
+  }
+}
