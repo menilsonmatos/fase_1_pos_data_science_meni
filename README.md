@@ -151,8 +151,6 @@ Essa solução deveria ser validada antes de uso real, com separação entre tre
 │   ├── figures/
 │   ├── analysis_summary.json
 │   ├── relatorio_analitico.md
-│   ├── storytelling_slides.md
-│   └── roteiro_video_executivo.md
 ├── scripts/
 │   └── analyze_nps.py
 ├── README.md
