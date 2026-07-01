@@ -6,8 +6,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from model import train_detractor_model
-
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DATA = ROOT / "data" / "raw" / "desafio_nps_fase_1.csv"
@@ -205,8 +203,6 @@ def main() -> None:
         detractor_rate=("nps_group", lambda s: (s == "Detrator").mean() * 100),
     )
 
-    model = train_detractor_model(df)
-
     write_svg_bar(
         FIG_DIR / "01_nps_distribution.svg",
         "Distribuição dos clientes por classe de NPS",
@@ -245,7 +241,6 @@ def main() -> None:
         "by_delay": by_delay.round(2).to_dict(orient="index"),
         "by_complaint": by_complaint.round(2).to_dict(orient="index"),
         "by_service": by_service.round(2).to_dict(orient="index"),
-        "model": model,
     }
     (REPORT_DIR / "analysis_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
 
@@ -276,12 +271,12 @@ def main() -> None:
         "## Regiões",
         to_markdown_table(by_region.round(2)),
         "",
-        "## Modelo preditivo opcional",
-        "Foi treinado um modelo de regressão logística simples, implementado com NumPy, para prever risco de cliente detrator (NPS <= 6).",
-        f"- Acurácia: {model['accuracy']:.2%}.",
-        f"- Precisão para detratores: {model['precision_detractor']:.2%}.",
-        f"- Recall para detratores: {model['recall_detractor']:.2%}.",
-        f"- Matriz de confusão: {model['confusion_matrix']}.",
+        "## Reflexão sobre modelo preditivo",
+        "A implementação do modelo preditivo é opcional neste desafio. Para uma próxima etapa, a empresa poderia usar os dados operacionais para prever o risco de um cliente se tornar detrator antes da aplicação da pesquisa de NPS.",
+        "",
+        "Uma abordagem recomendada seria um modelo de classificação binária, no qual a variável alvo indicaria se o cliente é detrator (`nps_score <= 6`) ou não detrator. As variáveis de entrada poderiam incluir atraso na entrega, quantidade de reclamações, contatos com atendimento, tempo de resolução, frete, recompra e score interno de satisfação.",
+        "",
+        "Do ponto de vista de negócio, esse modelo poderia alimentar uma fila de atendimento preventivo, priorizando clientes com maior risco de insatisfação. O cuidado principal seria usar a previsão como apoio à decisão, e não como verdade absoluta.",
         "",
         "## Recomendação gerencial",
         "- Criar uma régua de alerta para pedidos com atraso, reclamação ou múltiplos contatos com atendimento.",
