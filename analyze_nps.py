@@ -6,6 +6,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from model import train_detractor_model
+
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DATA = ROOT / "data" / "raw" / "desafio_nps_fase_1.csv"
@@ -127,63 +129,6 @@ def to_markdown_table(df: pd.DataFrame) -> str:
     return "\n".join([header, sep, *rows])
 
 
-def make_features(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series, list[str]]:
-    y = (df["nps_score"] <= 6).astype(int)
-    base = df.drop(columns=["nps_score", "nps_group", "customer_id", "order_id"], errors="ignore")
-    X = pd.get_dummies(base, columns=["customer_region"], drop_first=False, dtype=float)
-    feature_names = list(X.columns)
-    return X.astype(float), y, feature_names
-
-
-def sigmoid(z: np.ndarray) -> np.ndarray:
-    z = np.clip(z, -35, 35)
-    return 1 / (1 + np.exp(-z))
-
-
-def fit_logistic_regression(X: pd.DataFrame, y: pd.Series, epochs: int = 2600, lr: float = 0.07) -> dict:
-    rng = np.random.default_rng(42)
-    idx = rng.permutation(len(X))
-    split = int(len(X) * 0.8)
-    train_idx, test_idx = idx[:split], idx[split:]
-
-    X_train_raw = X.iloc[train_idx].to_numpy(dtype=float)
-    X_test_raw = X.iloc[test_idx].to_numpy(dtype=float)
-    y_train = y.iloc[train_idx].to_numpy(dtype=float)
-    y_test = y.iloc[test_idx].to_numpy(dtype=float)
-
-    mean = X_train_raw.mean(axis=0)
-    std = X_train_raw.std(axis=0)
-    std[std == 0] = 1
-    X_train = (X_train_raw - mean) / std
-    X_test = (X_test_raw - mean) / std
-    X_train = np.c_[np.ones(len(X_train)), X_train]
-    X_test = np.c_[np.ones(len(X_test)), X_test]
-
-    weights = np.zeros(X_train.shape[1])
-    for _ in range(epochs):
-        pred = sigmoid(X_train @ weights)
-        grad = X_train.T @ (pred - y_train) / len(y_train)
-        weights -= lr * grad
-
-    proba = sigmoid(X_test @ weights)
-    pred = (proba >= 0.5).astype(int)
-    accuracy = float((pred == y_test).mean())
-    tp = int(((pred == 1) & (y_test == 1)).sum())
-    tn = int(((pred == 0) & (y_test == 0)).sum())
-    fp = int(((pred == 1) & (y_test == 0)).sum())
-    fn = int(((pred == 0) & (y_test == 1)).sum())
-    precision = tp / (tp + fp) if tp + fp else 0.0
-    recall = tp / (tp + fn) if tp + fn else 0.0
-
-    return {
-        "accuracy": accuracy,
-        "precision_detractor": precision,
-        "recall_detractor": recall,
-        "confusion_matrix": {"tn": tn, "fp": fp, "fn": fn, "tp": tp},
-        "coefficients": weights[1:].tolist(),
-    }
-
-
 def main() -> None:
     FIG_DIR.mkdir(parents=True, exist_ok=True)
     (ROOT / "data" / "processed").mkdir(parents=True, exist_ok=True)
@@ -260,11 +205,7 @@ def main() -> None:
         detractor_rate=("nps_group", lambda s: (s == "Detrator").mean() * 100),
     )
 
-    X, y, features = make_features(df)
-    model = fit_logistic_regression(X, y)
-    coef = pd.Series(model["coefficients"], index=features).sort_values()
-    model["top_risk_factors"] = coef.tail(8).sort_values(ascending=False).to_dict()
-    model["top_protection_factors"] = coef.head(8).to_dict()
+    model = train_detractor_model(df)
 
     write_svg_bar(
         FIG_DIR / "01_nps_distribution.svg",
