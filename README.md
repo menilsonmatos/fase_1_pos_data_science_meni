@@ -56,12 +56,12 @@ Para fins de análise gerencial, o NPS foi segmentado em:
 - **Neutro:** `6 < nps_score <= 8`
 - **Promotor:** `nps_score > 8`
 
-Para o modelo opcional, foi criado um alvo binário:
+Para uma eventual modelagem futura, o alvo poderia ser binário:
 
 - `1`: cliente detrator, com `nps_score <= 6`
 - `0`: cliente não detrator
 
-Essa formulação é útil para priorizar ações preventivas. O principal cuidado é evitar usar a previsão como verdade absoluta ou punir áreas sem contexto operacional. O modelo deve apoiar decisões, não substituir análise humana.
+Essa formulação seria útil para priorizar ações preventivas. O principal cuidado seria evitar usar a previsão como verdade absoluta ou punir áreas sem contexto operacional. Um modelo deve apoiar decisões, não substituir análise humana.
 
 ## Metodologia
 
@@ -70,7 +70,7 @@ Essa formulação é útil para priorizar ações preventivas. O principal cuida
 3. Análise descritiva da distribuição de satisfação.
 4. Análise por atraso de entrega, reclamações, atendimento e região.
 5. Cálculo de correlações entre variáveis operacionais e NPS.
-6. Construção de um modelo simples de regressão logística com NumPy para prever risco de detrator.
+6. Reflexão conceitual sobre como um modelo preditivo poderia ser usado em fases futuras.
 7. Geração de relatório e visualizações para storytelling gerencial.
 
 ## Principais Resultados
@@ -110,6 +110,18 @@ Clientes sem contato com atendimento têm NPS médio de **5,54**. Clientes com 3
 
 As diferenças regionais existem, mas são menores que os efeitos de atraso, reclamações e atendimento. Isso sugere que a prioridade deve estar em processos operacionais, não apenas em segmentação geográfica.
 
+## Reflexão sobre Modelo Preditivo
+
+Neste projeto, a implementação do modelo preditivo não foi incluída, pois essa parte é opcional no desafio. Ainda assim, a análise indica como a empresa poderia evoluir para uma solução preditiva.
+
+Uma estratégia possível seria construir um modelo de classificação para prever risco de cliente detrator:
+
+- **Alvo:** cliente detrator, definido como `nps_score <= 6`.
+- **Entradas:** atraso de entrega, reclamações, contatos com atendimento, tempo de resolução, frete, recompra, score interno de satisfação e região.
+- **Uso prático:** priorizar clientes em risco em uma fila de atendimento preventivo.
+
+Essa solução deveria ser validada antes de uso real, com separação entre treino e teste, avaliação de métricas e monitoramento contínuo para evitar decisões injustas ou enviesadas.
+
 ## Recomendações Práticas
 
 - Criar alertas automáticos para pedidos com atraso, reclamação ou múltiplos contatos.
@@ -123,7 +135,7 @@ As diferenças regionais existem, mas são menores que os efeitos de atraso, rec
 
 - A base é histórica e pode não capturar todos os fatores de experiência do cliente.
 - Não há informações sobre categoria de produto, transportadora, canal de venda ou histórico completo de relacionamento.
-- O modelo foi criado para fins acadêmicos e deve ser validado antes de uso em produção.
+- Uma solução preditiva futura precisaria ser validada antes de uso em produção.
 - Correlação não implica causalidade; os achados devem orientar hipóteses e ações controladas.
 
 ## Estrutura do Projeto
@@ -138,6 +150,9 @@ As diferenças regionais existem, mas são menores que os efeitos de atraso, rec
 ├── reports/
 │   ├── figures/
 │   ├── analysis_summary.json
+│   ├── relatorio_analitico.md
+│   ├── storytelling_slides.md
+│   └── roteiro_video_executivo.md
 ├── scripts/
 │   └── analyze_nps.py
 ├── README.md
@@ -168,6 +183,8 @@ reports/figures/
 
 ## Entregáveis
 
-- Código reproduzível de tratamento, EDA e modelo opcional.
+- Código reproduzível de tratamento e EDA.
+- Relatório analítico em Markdown.
 - Visualizações em SVG.
 - Material de storytelling gerencial.
+- Roteiro de vídeo executivo de até 5 minutos.
