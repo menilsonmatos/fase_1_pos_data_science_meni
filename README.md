@@ -110,19 +110,6 @@ Clientes sem contato com atendimento têm NPS médio de **5,54**. Clientes com 3
 
 As diferenças regionais existem, mas são menores que os efeitos de atraso, reclamações e atendimento. Isso sugere que a prioridade deve estar em processos operacionais, não apenas em segmentação geográfica.
 
-## Modelo Preditivo Opcional
-
-Foi implementado um modelo de regressão logística simples, sem dependência de scikit-learn, para prever risco de cliente detrator.
-
-Resultados em base de teste:
-
-- Acurácia: **87,40%**
-- Precisão para detratores: **88,22%**
-- Recall para detratores: **95,65%**
-- Matriz de confusão: `TN=85`, `FP=47`, `FN=16`, `TP=352`
-
-O alto recall é útil para uma estratégia preventiva, pois reduz o risco de deixar clientes insatisfeitos sem tratamento. O trade-off é acionar alguns clientes que talvez não fossem detratores, o que é aceitável quando o custo da ação preventiva é menor que o custo de perder o cliente.
-
 ## Recomendações Práticas
 
 - Criar alertas automáticos para pedidos com atraso, reclamação ou múltiplos contatos.
