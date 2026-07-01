@@ -45,12 +45,6 @@
 | Nordeste        | 485    | 4.42    | 74.02          | 7.01          |
 | Sul             | 521    | 4.49    | 72.74          | 9.60          |
 
-## Modelo preditivo opcional
-Foi treinado um modelo de regressão logística simples, implementado com NumPy, para prever risco de cliente detrator (NPS <= 6).
-- Acurácia: 87.40%.
-- Precisão para detratores: 88.22%.
-- Recall para detratores: 95.65%.
-- Matriz de confusão: {'tn': 85, 'fp': 47, 'fn': 16, 'tp': 352}.
 
 ## Recomendação gerencial
 - Criar uma régua de alerta para pedidos com atraso, reclamação ou múltiplos contatos com atendimento.
